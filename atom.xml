@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>水风车的博客</title>
+  <icon>https://blog.shuifengche.top/source/img/favicon.png</icon>
+  <subtitle>水风车</subtitle>
+  <link href="https://blog.shuifengche.top/atom.xml" rel="self"/>
+  
+  <link href="https://blog.shuifengche.top/"/>
+  <updated>2020-07-04T03:58:40.001Z</updated>
+  <id>https://blog.shuifengche.top/</id>
+  
+  <author>
+    <name>水风车</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>全平台同步，很难吗？</title>
+    <link href="https://blog.shuifengche.top/2020/07/04/%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%90%8C%E6%AD%A5%EF%BC%8C%E5%BE%88%E9%9A%BE%E5%90%97%EF%BC%9F/"/>
+    <id>https://blog.shuifengche.top/2020/07/04/%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%90%8C%E6%AD%A5%EF%BC%8C%E5%BE%88%E9%9A%BE%E5%90%97%EF%BC%9F/</id>
+    <published>2020-07-04T04:00:00.000Z</published>
+    <updated>2020-07-04T03:58:40.001Z</updated>
+    
+    
+    <summary type="html">全平台同步经验分享。</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://blog.shuifengche.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="系统" scheme="https://blog.shuifengche.top/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="macOS" scheme="https://blog.shuifengche.top/tags/macOS/"/>
+    
+    <category term="云同步" scheme="https://blog.shuifengche.top/tags/%E4%BA%91%E5%90%8C%E6%AD%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>P、NP与NPC问题的一些思考</title>
+    <link href="https://blog.shuifengche.top/2020/05/30/P-NP%E5%92%8CNPC%E9%97%AE%E9%A2%98/"/>
+    <id>https://blog.shuifengche.top/2020/05/30/P-NP%E5%92%8CNPC%E9%97%AE%E9%A2%98/</id>
+    <published>2020-05-30T07:20:00.000Z</published>
+    <updated>2020-05-30T07:41:21.804Z</updated>
+    
+    
+    <summary type="html">最近在这方面遇到了三个问题。</summary>
+    
+    
+    
+    <category term="数学" scheme="https://blog.shuifengche.top/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="NP问题" scheme="https://blog.shuifengche.top/tags/NP%E9%97%AE%E9%A2%98/"/>
+    
+    <category term="计算数学" scheme="https://blog.shuifengche.top/tags/%E8%AE%A1%E7%AE%97%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="算法" scheme="https://blog.shuifengche.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PA4-异常中断与IO</title>
+    <link href="https://blog.shuifengche.top/2020/01/20/PA4-%E5%BC%82%E5%B8%B8%E4%B8%AD%E6%96%AD%E4%B8%8EIO/"/>
+    <id>https://blog.shuifengche.top/2020/01/20/PA4-%E5%BC%82%E5%B8%B8%E4%B8%AD%E6%96%AD%E4%B8%8EIO/</id>
+    <published>2020-01-20T14:59:43.000Z</published>
+    <updated>2020-01-20T16:05:43.275Z</updated>
+    
+    
+    <summary type="html">PA 2019秋季实验系列之PA 4</summary>
+    
+    
+    
+    <category term="实验" scheme="https://blog.shuifengche.top/categories/%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="PA" scheme="https://blog.shuifengche.top/tags/PA/"/>
+    
+    <category term="i386" scheme="https://blog.shuifengche.top/tags/i386/"/>
+    
+    <category term="异常与中断" scheme="https://blog.shuifengche.top/tags/%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD/"/>
+    
+    <category term="IO" scheme="https://blog.shuifengche.top/tags/IO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PA3-存储管理</title>
+    <link href="https://blog.shuifengche.top/2020/01/20/PA3-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/"/>
+    <id>https://blog.shuifengche.top/2020/01/20/PA3-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/</id>
+    <published>2020-01-20T13:41:05.000Z</published>
+    <updated>2020-01-20T15:29:21.155Z</updated>
+    
+    
+    <summary type="html">PA 2019秋季实验系列之PA 3</summary>
+    
+    
+    
+    <category term="实验" scheme="https://blog.shuifengche.top/categories/%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="PA" scheme="https://blog.shuifengche.top/tags/PA/"/>
+    
+    <category term="分段模式" scheme="https://blog.shuifengche.top/tags/%E5%88%86%E6%AE%B5%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="分页模式" scheme="https://blog.shuifengche.top/tags/%E5%88%86%E9%A1%B5%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="Cache" scheme="https://blog.shuifengche.top/tags/Cache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用终端自动化部署hexo，编程解决豆瓣插件bug</title>
+    <link href="https://blog.shuifengche.top/2019/12/08/%E7%94%A8%E7%BB%88%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2hexo%EF%BC%8C%E7%BC%96%E7%A8%8B%E8%A7%A3%E5%86%B3%E8%B1%86%E7%93%A3%E6%8F%92%E4%BB%B6bug/"/>
+    <id>https://blog.shuifengche.top/2019/12/08/%E7%94%A8%E7%BB%88%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2hexo%EF%BC%8C%E7%BC%96%E7%A8%8B%E8%A7%A3%E5%86%B3%E8%B1%86%E7%93%A3%E6%8F%92%E4%BB%B6bug/</id>
+    <published>2019-12-08T03:55:43.000Z</published>
+    <updated>2019-12-26T08:03:07.108Z</updated>
+    
+    
+    <summary type="html">如题。</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://blog.shuifengche.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="终端" scheme="https://blog.shuifengche.top/tags/%E7%BB%88%E7%AB%AF/"/>
+    
+    <category term="c++" scheme="https://blog.shuifengche.top/tags/c/"/>
+    
+    <category term="自动化" scheme="https://blog.shuifengche.top/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gitbook部署到服务器</title>
+    <link href="https://blog.shuifengche.top/2019/11/22/gitbook%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://blog.shuifengche.top/2019/11/22/gitbook%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
+    <published>2019-11-22T12:56:23.000Z</published>
+    <updated>2019-12-23T00:55:48.274Z</updated>
+    
+    
+    <summary type="html">用gitbook搭建属于自己的笔记系统</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://blog.shuifengche.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="git" scheme="https://blog.shuifengche.top/tags/git/"/>
+    
+    <category term="gitbook" scheme="https://blog.shuifengche.top/tags/gitbook/"/>
+    
+    <category term="笔记" scheme="https://blog.shuifengche.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PA2 程序的执行</title>
+    <link href="https://blog.shuifengche.top/2019/11/19/PA2-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C/"/>
+    <id>https://blog.shuifengche.top/2019/11/19/PA2-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%A7%E8%A1%8C/</id>
+    <published>2019-11-18T16:15:54.000Z</published>
+    <updated>2019-12-12T06:32:25.248Z</updated>
+    
+    
+    <summary type="html">PA 2019秋季实验系列之PA 2</summary>
+    
+    
+    
+    <category term="实验" scheme="https://blog.shuifengche.top/categories/%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="PA" scheme="https://blog.shuifengche.top/tags/PA/"/>
+    
+    <category term="ELF" scheme="https://blog.shuifengche.top/tags/ELF/"/>
+    
+    <category term="汇编语言" scheme="https://blog.shuifengche.top/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="i386" scheme="https://blog.shuifengche.top/tags/i386/"/>
+    
+    <category term="正则表达式" scheme="https://blog.shuifengche.top/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+    <category term="词法分析" scheme="https://blog.shuifengche.top/tags/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PS/2键盘接口</title>
+    <link href="https://blog.shuifengche.top/2019/11/17/PS-2%E9%94%AE%E7%9B%98%E6%8E%A5%E5%8F%A3/"/>
+    <id>https://blog.shuifengche.top/2019/11/17/PS-2%E9%94%AE%E7%9B%98%E6%8E%A5%E5%8F%A3/</id>
+    <published>2019-11-17T12:56:08.000Z</published>
+    <updated>2019-12-12T06:32:33.072Z</updated>
+    
+    
+    <summary type="html">数字电路实验八</summary>
+    
+    
+    
+    <category term="实验" scheme="https://blog.shuifengche.top/categories/%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="PS/2" scheme="https://blog.shuifengche.top/tags/PS-2/"/>
+    
+    <category term="FPGA" scheme="https://blog.shuifengche.top/tags/FPGA/"/>
+    
+    <category term="Verilog HDL语言" scheme="https://blog.shuifengche.top/tags/Verilog-HDL%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="数字电路" scheme="https://blog.shuifengche.top/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
+    
+    <category term="状态机" scheme="https://blog.shuifengche.top/tags/%E7%8A%B6%E6%80%81%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>水风车的博客2.0</title>
+    <link href="https://blog.shuifengche.top/2019/10/15/%E6%B0%B4%E9%A3%8E%E8%BD%A6%E7%9A%84%E5%8D%9A%E5%AE%A22-0/"/>
+    <id>https://blog.shuifengche.top/2019/10/15/%E6%B0%B4%E9%A3%8E%E8%BD%A6%E7%9A%84%E5%8D%9A%E5%AE%A22-0/</id>
+    <published>2019-10-15T05:06:43.000Z</published>
+    <updated>2020-10-06T16:02:45.010Z</updated>
+    
+    
+    <summary type="html">博客2.0时代，基于hexo，部署于我的云服务器。</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://blog.shuifengche.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="git" scheme="https://blog.shuifengche.top/tags/git/"/>
+    
+    <category term="博客" scheme="https://blog.shuifengche.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="Hexo" scheme="https://blog.shuifengche.top/tags/Hexo/"/>
+    
+    <category term="云服务器" scheme="https://blog.shuifengche.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="宝塔面板" scheme="https://blog.shuifengche.top/tags/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大数的加法与乘法</title>
+    <link href="https://blog.shuifengche.top/2019/10/03/%E5%A4%A7%E6%95%B0%E7%9A%84%E5%8A%A0%E6%B3%95%E4%B8%8E%E4%B9%98%E6%B3%95/"/>
+    <id>https://blog.shuifengche.top/2019/10/03/%E5%A4%A7%E6%95%B0%E7%9A%84%E5%8A%A0%E6%B3%95%E4%B8%8E%E4%B9%98%E6%B3%95/</id>
+    <published>2019-10-03T15:00:32.000Z</published>
+    <updated>2019-12-12T06:31:20.689Z</updated>
+    
+    
+    <summary type="html">无限长的两个整数如何加乘？</summary>
+    
+    
+    
+    <category term="编程" scheme="https://blog.shuifengche.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="算法" scheme="https://blog.shuifengche.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数据结构" scheme="https://blog.shuifengche.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="字符串" scheme="https://blog.shuifengche.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卡特兰数</title>
+    <link href="https://blog.shuifengche.top/2019/09/28/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/"/>
+    <id>https://blog.shuifengche.top/2019/09/28/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/</id>
+    <published>2019-09-28T03:56:56.000Z</published>
+    <updated>2019-12-12T06:32:02.370Z</updated>
+    
+    
+    <summary type="html">我遇到了卡特兰数这个“难题”。</summary>
+    
+    
+    
+    <category term="数学" scheme="https://blog.shuifengche.top/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="卡特兰数" scheme="https://blog.shuifengche.top/tags/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/"/>
+    
+    <category term="组合数学" scheme="https://blog.shuifengche.top/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="递推问题" scheme="https://blog.shuifengche.top/tags/%E9%80%92%E6%8E%A8%E9%97%AE%E9%A2%98/"/>
+    
+    <category term="数据结构" scheme="https://blog.shuifengche.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Datalab 实验1</title>
+    <link href="https://blog.shuifengche.top/2019/09/23/Datalab-%E5%AE%9E%E9%AA%8C1/"/>
+    <id>https://blog.shuifengche.top/2019/09/23/Datalab-%E5%AE%9E%E9%AA%8C1/</id>
+    <published>2019-09-23T08:42:38.000Z</published>
+    <updated>2019-12-12T06:31:49.423Z</updated>
+    
+    
+    <summary type="html">计算机系统基础课程的datalab实验1记录。</summary>
+    
+    
+    
+    <category term="实验" scheme="https://blog.shuifengche.top/categories/%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="PA" scheme="https://blog.shuifengche.top/tags/PA/"/>
+    
+    <category term="Datalab" scheme="https://blog.shuifengche.top/tags/Datalab/"/>
+    
+    <category term="CSAPP" scheme="https://blog.shuifengche.top/tags/CSAPP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PA1 数据的表示存取和运算</title>
+    <link href="https://blog.shuifengche.top/2019/09/21/PA1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%AD%98%E5%8F%96%E5%92%8C%E8%BF%90%E7%AE%97/"/>
+    <id>https://blog.shuifengche.top/2019/09/21/PA1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%AD%98%E5%8F%96%E5%92%8C%E8%BF%90%E7%AE%97/</id>
+    <published>2019-09-21T03:13:35.000Z</published>
+    <updated>2020-01-20T14:54:42.274Z</updated>
+    
+    
+    <summary type="html">PA 2019秋季实验系列之PA 1</summary>
+    
+    
+    
+    <category term="实验" scheme="https://blog.shuifengche.top/categories/%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="PA" scheme="https://blog.shuifengche.top/tags/PA/"/>
+    
+    <category term="CPU" scheme="https://blog.shuifengche.top/tags/CPU/"/>
+    
+    <category term="ALU" scheme="https://blog.shuifengche.top/tags/ALU/"/>
+    
+    <category term="FPU" scheme="https://blog.shuifengche.top/tags/FPU/"/>
+    
+    <category term="git" scheme="https://blog.shuifengche.top/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux虚拟机安装</title>
+    <link href="https://blog.shuifengche.top/2019/09/16/linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/"/>
+    <id>https://blog.shuifengche.top/2019/09/16/linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</id>
+    <published>2019-09-16T09:15:40.000Z</published>
+    <updated>2019-12-12T06:31:58.675Z</updated>
+    
+    
+    <summary type="html">程序员离不开linux</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://blog.shuifengche.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="linux" scheme="https://blog.shuifengche.top/tags/linux/"/>
+    
+    <category term="虚拟机" scheme="https://blog.shuifengche.top/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Win to go踩坑之旅</title>
+    <link href="https://blog.shuifengche.top/2019/09/07/Win-to-go%E8%B8%A9%E5%9D%91%E4%B9%8B%E6%97%85/"/>
+    <id>https://blog.shuifengche.top/2019/09/07/Win-to-go%E8%B8%A9%E5%9D%91%E4%B9%8B%E6%97%85/</id>
+    <published>2019-09-07T04:18:17.000Z</published>
+    <updated>2019-12-12T06:32:42.964Z</updated>
+    
+    
+    <summary type="html">一个固态硬盘==随身携带的windows</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://blog.shuifengche.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="系统" scheme="https://blog.shuifengche.top/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="Windows" scheme="https://blog.shuifengche.top/tags/Windows/"/>
+    
+    <category term="macOS" scheme="https://blog.shuifengche.top/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大一暑假我想说</title>
+    <link href="https://blog.shuifengche.top/2019/07/28/%E5%A4%A7%E4%B8%80%E6%9A%91%E5%81%87%E6%88%91%E6%83%B3%E8%AF%B4/"/>
+    <id>https://blog.shuifengche.top/2019/07/28/%E5%A4%A7%E4%B8%80%E6%9A%91%E5%81%87%E6%88%91%E6%83%B3%E8%AF%B4/</id>
+    <published>2019-07-28T07:13:16.000Z</published>
+    <updated>2019-12-14T15:42:49.409Z</updated>
+    
+    
+    <summary type="html">这个暑假已经过去一半了，我想说些什么。</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://blog.shuifengche.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="暑假" scheme="https://blog.shuifengche.top/tags/%E6%9A%91%E5%81%87/"/>
+    
+    <category term="生活" scheme="https://blog.shuifengche.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>水风车的博客1.0</title>
+    <link href="https://blog.shuifengche.top/2019/07/28/%E6%B0%B4%E9%A3%8E%E8%BD%A6%E7%9A%84%E5%8D%9A%E5%AE%A21-0/"/>
+    <id>https://blog.shuifengche.top/2019/07/28/%E6%B0%B4%E9%A3%8E%E8%BD%A6%E7%9A%84%E5%8D%9A%E5%AE%A21-0/</id>
+    <published>2019-07-28T06:33:16.000Z</published>
+    <updated>2019-12-12T06:30:58.814Z</updated>
+    
+    
+    <summary type="html">这是我搭建的第一个博客，基于hexo，托管于GitHub Pages。</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://blog.shuifengche.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="博客" scheme="https://blog.shuifengche.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="Hexo" scheme="https://blog.shuifengche.top/tags/Hexo/"/>
+    
+    <category term="GitHub" scheme="https://blog.shuifengche.top/tags/GitHub/"/>
+    
+  </entry>
+  
+</feed>
