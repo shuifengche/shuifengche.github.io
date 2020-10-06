@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PA1 数据的表示存取和运算 | 本站正在维护，请稍后再访问。</title><meta name="keywords" content="PA,CPU,ALU,FPU,git"><meta name="author" content="水风车"><meta name="copyright" content="水风车"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="PA 2019秋季实验系列之PA 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PA1 数据的表示存取和运算">
+<meta property="og:url" content="https://blog.shuifengche.top/2019/09/21/PA1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%AD%98%E5%8F%96%E5%92%8C%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:site_name" content="本站正在维护，请稍后再访问。">
+<meta property="og:description" content="PA 2019秋季实验系列之PA 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cdn.shuifengche.top/i386.png">
+<meta property="article:published_time" content="2019-09-21T03:13:35.000Z">
+<meta property="article:modified_time" content="2020-01-20T14:54:42.274Z">
+<meta property="article:author" content="水风车">
+<meta property="article:tag" content="PA">
+<meta property="article:tag" content="CPU">
+<meta property="article:tag" content="ALU">
+<meta property="article:tag" content="FPU">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.shuifengche.top/i386.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.shuifengche.top/2019/09/21/PA1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%AD%98%E5%8F%96%E5%92%8C%E8%BF%90%E7%AE%97/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-01-20 22:54:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">48</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.yuque.com/shuifengche"><i class="fa-fw fas fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/categories/%E5%AE%9E%E9%AA%8C/"><i class="fa-fw fas fa-flask"></i><span> 实验</span></a></li><li><a class="site-page" href="/categories/%E6%8A%98%E8%85%BE/"><i class="fa-fw fas fa-rocket"></i><span> 折腾</span></a></li><li><a class="site-page" href="/categories/%E6%95%B0%E5%AD%A6/"><i class="fa-fw fas fa-subscript"></i><span> 数学</span></a></li><li><a class="site-page" href="/categories/%E7%BC%96%E7%A8%8B/"><i class="fa-fw fas fa-bug"></i><span> 编程</span></a></li><li><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-edit"></i><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-picture-o"></i><span> 相册</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-address-book"></i><span> 其他</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li><li><a class="site-page" href="/message/"><i class="fa-fw fas fa-coffee"></i><span> 留言</span></a></li><li><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li></ul></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PA0-%E9%85%8D%E7%BD%AEDebian%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">PA0 配置Debian环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E7%94%A8%E6%88%B7%E5%8A%A0%E5%85%A5sudo%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">将用户加入sudo列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">安装必要的工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96PA%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E6%A1%86%E6%9E%B6"><span class="toc-number">1.3.</span> <span class="toc-text">获取PA项目的代码框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PA1-1-%E6%95%B0%E6%8D%AE%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">2.</span> <span class="toc-text">PA1-1 数据在计算机内的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E6%A8%A1%E6%8B%9F"><span class="toc-number">2.1.</span> <span class="toc-text">寄存器的模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E6%A8%A1%E6%8B%9F"><span class="toc-number">2.2.</span> <span class="toc-text">主存的模拟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PA1-2-%E6%95%B4%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AD%98%E5%82%A8%E5%92%8C%E8%BF%90%E7%AE%97"><span class="toc-number">3.</span> <span class="toc-text">PA1-2 整数的表示、存储和运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="toc-number">3.1.</span> <span class="toc-text">几种标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%87%8F"><span class="toc-number">3.2.</span> <span class="toc-text">加减</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E4%BD%8D"><span class="toc-number">3.3.</span> <span class="toc-text">移位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91"><span class="toc-number">3.4.</span> <span class="toc-text">逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%98%E9%99%A4"><span class="toc-number">3.5.</span> <span class="toc-text">乘除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PA1-3-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">PA1-3 浮点数的表示和运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">4.1.</span> <span class="toc-text">浮点数的表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4"><span class="toc-number">4.2.</span> <span class="toc-text">浮点数的加减乘除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">5.</span> <span class="toc-text">最后</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(http://cdn.shuifengche.top/i386.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">本站正在维护，请稍后再访问。</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.yuque.com/shuifengche"><i class="fa-fw fas fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/categories/%E5%AE%9E%E9%AA%8C/"><i class="fa-fw fas fa-flask"></i><span> 实验</span></a></li><li><a class="site-page" href="/categories/%E6%8A%98%E8%85%BE/"><i class="fa-fw fas fa-rocket"></i><span> 折腾</span></a></li><li><a class="site-page" href="/categories/%E6%95%B0%E5%AD%A6/"><i class="fa-fw fas fa-subscript"></i><span> 数学</span></a></li><li><a class="site-page" href="/categories/%E7%BC%96%E7%A8%8B/"><i class="fa-fw fas fa-bug"></i><span> 编程</span></a></li><li><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-edit"></i><span> 随笔</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-picture-o"></i><span> 相册</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-address-book"></i><span> 其他</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li><li><a class="site-page" href="/message/"><i class="fa-fw fas fa-coffee"></i><span> 留言</span></a></li><li><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">PA1 数据的表示存取和运算</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-09-21T03:13:35.000Z" title="发表于 2019-09-21 11:13:35">2019-09-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-01-20T14:54:42.274Z" title="更新于 2020-01-20 22:54:42">2020-01-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E9%AA%8C/">实验</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>PA是我们学校计算机系大二年级的一门硬核实验课，由四个主要部分组成，分别是：</p>
+<ul>
+<li>PA 1 数据的表示、存取和运算</li>
+<li>PA 2 程序的执行</li>
+<li>PA 3 存储管理</li>
+<li>PA 4 异常、中断与I/O</li>
+</ul>
+<p>这四个阶段大致对应模拟器中对CPU、MMU和Device的模拟。</p>
+<p>该实验主要是作为《计算机系统基础》这门课的辅助性课程。</p>
+<p>老师提供了实验手册以及已经很完善的程序代码框架，我们要做的只是按照实验手册的要求，去特定的文件中编写一些关键的函数。</p>
+<p>这次的博客系列文章主要用于记录我的PA实验过程，一方面想要记录下自己在这些方面做过的第一个实验，另一方面也希望通过记录的过程去复习、巩固以及加深对相关知识的理解。</p>
+<p>那么我们开始吧！</p>
+<h2 id="PA0-配置Debian环境"><a href="#PA0-配置Debian环境" class="headerlink" title="PA0 配置Debian环境"></a>PA0 配置Debian环境</h2><p>安装Debian虚拟机，方法与我之前的一篇文章“linux虚拟机安装”类似。</p>
+<p>选择Debian 10的i386版本，在虚拟机软件vmware/virtual box的辅助下完成Debian虚拟机的创建。</p>
+<h3 id="将用户加入sudo列表"><a href="#将用户加入sudo列表" class="headerlink" title="将用户加入sudo列表"></a>将用户加入sudo列表</h3><p>在终端输入以下指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su -root</span><br><span class="line">&#x2F;&#x2F;input your password</span><br><span class="line">adduser your_username sudo</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p>然后注销用户，重新登录用户，就成功将该用户加入sudo列表了。</p>
+<h3 id="安装必要的工具"><a href="#安装必要的工具" class="headerlink" title="安装必要的工具"></a>安装必要的工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libreadline-dev libsdl1.2-dev vim git tmux dialog python python-rsa openssl</span><br></pre></td></tr></table></figure>
+
+<p>复制粘贴等一等就完事了。</p>
+<h3 id="获取PA项目的代码框架"><a href="#获取PA项目的代码框架" class="headerlink" title="获取PA项目的代码框架"></a>获取PA项目的代码框架</h3><p>老师使用了Gitlab网站来管理，使用下来感觉和GitHub区别不大。</p>
+<p>弄好仓库，配置SSH keys，然后完成一项任务就push下就OK了。</p>
+<h2 id="PA1-1-数据在计算机内的存储"><a href="#PA1-1-数据在计算机内的存储" class="headerlink" title="PA1-1 数据在计算机内的存储"></a>PA1-1 数据在计算机内的存储</h2><p>这一节的内容主要是模拟寄存器和主存。</p>
+<h3 id="寄存器的模拟"><a href="#寄存器的模拟" class="headerlink" title="寄存器的模拟"></a>寄存器的模拟</h3><p>我们的实验模拟的是i386体系结构，这里需要8个32位寄存器。</p>
+<p>首先我们定义了一个全局的结构变量CPU_STATUS，并实体化为cpu，目标是：可以用cpu.eax访问寄存器%eax，并且可以用cpu.gpr[0]._16访问到cpu.eax的低16位，用cpu.gpr[0]._8[0]访问cpu.eax的低8位。</p>
+<p>为了实现用不同的访问方式访问同一变量以及该变量的部分内容，我们选择了union。</p>
+<p>对比一下struct与union</p>
+<ul>
+<li>struct：内部各个变量的存储相互独立</li>
+<li>union：各变量共同拥有同一个空间，但只占用自身大小</li>
+</ul>
+<p>下面是结构CPU_STATUS的定义。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">union</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    &#123;</span><br><span class="line">      uint32_t_32;</span><br><span class="line">      uint16_t_16;</span><br><span class="line">      uint8_t_8[<span class="number">2</span>];</span><br><span class="line">		&#125;;</span><br><span class="line">    <span class="keyword">uint32_t</span> val;</span><br><span class="line">	&#125;;</span><br><span class="line">  gpr[<span class="number">8</span>];</span><br><span class="line">  <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">  &#123;</span></span><br><span class="line">    <span class="keyword">uint32_t</span> eax,ecx,edx,ebx,esp,ebp,esi,edi;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="主存的模拟"><a href="#主存的模拟" class="headerlink" title="主存的模拟"></a>主存的模拟</h3><p>约定我们的NEMU拥有128MB字节的内存，我们可以定义一个这么大的数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MEM_SIZE_B 128*1024*1024</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> hw_mem[MEM_SIZE_B];</span><br></pre></td></tr></table></figure>
+
+<p>这样主存的物理空间就模拟好了，我们还需要定义一些函数用于对主存的读写操作。</p>
+<p>主要有物理地址读写、线性地址读写和虚拟地址读写三类函数，但项目说明中提到“在NEMU工作模式下，这三种地址相同”，所以简化了这些函数的构造。这些东西将会在后续实验中再次出现。</p>
+<h2 id="PA1-2-整数的表示、存储和运算"><a href="#PA1-2-整数的表示、存储和运算" class="headerlink" title="PA1-2 整数的表示、存储和运算"></a>PA1-2 整数的表示、存储和运算</h2><p>这一节我们要用C语言实现32位无符号整数、有符号整数的加减、乘除、移位、逻辑运算，这中间需要我们自己设置EFLAGS标志位——ZF\CF\OF\SF\PF等等。</p>
+<h3 id="几种标志位"><a href="#几种标志位" class="headerlink" title="几种标志位"></a>几种标志位</h3><p>ZF：结果为0时ZF为1，否则ZF为0。</p>
+<p>PF：结果的低八位中1的个数的奇偶性，偶1奇0。</p>
+<p>SF：即结果的符号位。</p>
+<p>以上三种标志位对于本节的大部分函数是通用的。</p>
+<p>CF与OF：</p>
+<p>这两个要特别说一下。</p>
+<p>计算CF时，要把两个操作数的机器码视作无符号整数，在此情况下考虑是否溢出；计算OF时，要把两个操作数的机器码视作带符号整数，然后去看是否溢出。</p>
+<p>当然，上面的说法不是他们的本质（CF的C是carry，OF的O是overflow），但这样的解释能让我更容易计算CF和OF的值。</p>
+<p>一般情况下，机器并不知道你的操作数是否带符号，所以它不得不按照无符号、带符号两种方式都判断一下，提供给调用者两个结果，让调用者自己选择。</p>
+<h3 id="加减"><a href="#加减" class="headerlink" title="加减"></a>加减</h3><p>本来我们应该分别实现无符号数的加减法以及带符号数的加减法，但在采用了补码表示法之后，带符号与无符号的整数加减法可以统一使用无符号整数的加减法来执行，因此我们只需实现无符号数的加减法操作即可。</p>
+<p>主要涉及add、adc、sub、sbb四种指令。</p>
+<p>add是dest+src，adc则是dest+src+CF，多加了一个CF位；同样，sbb比sub多减了一个CF。因此，计算CF的值时，adc比add要多考虑一种特殊情况。但OF的计算，则完全一样。</p>
+<p>以sbb函数为例大概说一下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">uint32_t</span> <span class="title">alu_adc</span><span class="params">(<span class="keyword">uint32_t</span> src,<span class="keyword">uint32_t</span> dest,<span class="keyword">size_t</span> data_size)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>参数是两个32位的无符号整数src、dest和具体的操作数长度data_size（8、16或32）。</p>
+<p>OF的设置：</p>
+<p>考虑OF时把dest、src视为带符号数，正数减正数、负数减负数都不会溢出，只有负数减正数或者正数减负数会溢出，而且结果应该和被减数不同号。</p>
+<p>此处忽略sbb比sub多减了CF这个细节。（具体原因我暂时不懂）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OF = (sign(dest)!=sign(src)) &amp;&amp; (sign(result)==sign(src)); </span><br></pre></td></tr></table></figure>
+
+<p>CF的设置：</p>
+<p>考虑CF时把dest、src视为无符号数，两个无符号数相减，再减去一个CF，如果CF==0，那么和sub一样，否则就会出现一种特殊情况：</p>
+<p>设32位无符号整数能表示的最大值是max，若src==max-1，则dest - src - CF == dest，这一种溢出的情况也要考虑到。</p>
+<h3 id="移位"><a href="#移位" class="headerlink" title="移位"></a>移位</h3><p>我们的代码都是用C语言编写的。</p>
+<p>C语言中对于无符号、带符号整数的移位采用相同的符号、不同的操作。</p>
+<p>如果对无符号整数进行“&lt;&lt;”操作，就是逻辑左移；如果对带符号整数进行“&lt;&lt;”，则是算术右移。</p>
+<p>这个实验给我们提供的参数是一个32位的无符号整数dest，要实现对它的逻辑左右移和算术左右移。</p>
+<p>逻辑右/算术右：直接对dest进行”&gt;&gt;”即可。</p>
+<p>逻辑左：dest是无符号数，直接对其“&lt;&lt;”即可。</p>
+<p>算术右：</p>
+<p>这里需要把dest强制类型转换为带符号整数，而且，dest是一个32位的无符参数，但它的实际位数是data_size，所以如果我们直接”&lt;&lt;”，系统会认为它的符号位是第31位，而实际上可能是第7位或者第15位。</p>
+<p>因此整个过程是，先强制类型转换变成带符号数，然后把这个32位数截断成它自身的长度，进行左移完成后，再扩展回原来的32位。</p>
+<h3 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h3><p>and、or、not、xor</p>
+<p>比较简单，不再细说。</p>
+<h3 id="乘除"><a href="#乘除" class="headerlink" title="乘除"></a>乘除</h3><p>无符号乘法、带符号乘法、无符号除法、带符号除法，以及额外添加的无符号模和带符号模运算。</p>
+<p>i386手册中对于带符号乘法的标志位设置比较模糊，所以就不做设置了。</p>
+<p>除法、模运算也不用设置标志位，所以没啥说的了。</p>
+<p>强制类型转换就完事了。</p>
+<h2 id="PA1-3-浮点数的表示和运算"><a href="#PA1-3-浮点数的表示和运算" class="headerlink" title="PA1-3 浮点数的表示和运算"></a>PA1-3 浮点数的表示和运算</h2><p>这次实验要实现的是单精度浮点数Float的加减乘除运算，整个过程中禁止使用类型转换，禁止使用C语言中对浮点数的操作，必须在机器码的状态下实现浮点数的四则运算。</p>
+<h3 id="浮点数的表示"><a href="#浮点数的表示" class="headerlink" title="浮点数的表示"></a>浮点数的表示</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">union</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">uint32_t</span> fraction : <span class="number">23</span>;</span><br><span class="line">        <span class="keyword">uint32_t</span> exponent : <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">uint32_t</span> sign : <span class="number">1</span>;</span><br><span class="line">	  &#125;;</span><br><span class="line">	  <span class="keyword">float</span> fval;</span><br><span class="line">	  <span class="keyword">uint32_t</span> val;</span><br><span class="line">&#125;FLOAT;</span><br></pre></td></tr></table></figure>
+
+<p>此处有一个C语言的知识点叫“位域”。</p>
+<p>比如exponent这个变量，虽然它是uint32_t类型的，但我只需要8个字节的空间，就可以这样来写。</p>
+<p>总体来看，struct的总空间依旧是32位，由于外部是union类型，所以可以直接通过变量val访问struct的32位机器码（用于做实验），还可以通过fval直接访问该浮点数（用于测试）。</p>
+<h3 id="浮点数的加减乘除"><a href="#浮点数的加减乘除" class="headerlink" title="浮点数的加减乘除"></a>浮点数的加减乘除</h3><p>实验指导中非常详细的介绍了，我就大概讲一下我的理解吧。</p>
+<p>两个单精度浮点数相加</p>
+<p>变量a：1、8、23</p>
+<p>变量b：1、8、23</p>
+<p>第一步，排除掉特殊情况。比如说其中一个数是正负零，或者正负无穷，或者NaN（非数值）。这些情况可以直接得出结果了。</p>
+<p>第二步，提取尾数。把变量的尾数23位提取出来（存储在uint32_t变量中），把隐藏位添加上去，非规格化数隐藏位是0，规格化数隐藏位是1。</p>
+<p>第三步，阶码对齐。加法的话，谁的阶码大，谁的值就大，要把阶码小的变量的尾数变小，阶码变大，一直到对齐。</p>
+<p>第四步，确保精度。上一步要求移动尾数，这样会丢弃末尾的一部分数据，为了保证计算的精度，我们在变量的尾数后再添加3个字节位，也参与运算，已增加加法的精度。（如何添加3位？可以左移三位，这样尾部就空出来3位了）这三位是G、R、S位，S位又叫做“粘滞位”，只要S位变为1，它就一直是1了。（原理我还不懂，但感觉为了计算的精度，这样做也挺有道理的）</p>
+<p>第五步，尾数相加，并规格化。我们为什么要规格化？尾数相加之后，可能出现进位，导致尾数超出或者少于23+3位（grs三位），这样的话我们就该把它移回去，同时要修改exp的值，在修改的过程中就会出现exp溢出、exp等于0的特殊情况。在这中间，要经常性地去考虑这个浮点数是否是变成了非规格化数。</p>
+<p>下面是“规格化”整个过程的伪代码，适用于加减乘除。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">uint32_t</span> <span class="title">internal_normalize</span><span class="params">(<span class="keyword">uint32_t</span> sign,<span class="keyword">int32_t</span> <span class="built_in">exp</span>,<span class="keyword">uint64_t</span> sig_grs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="comment">/*需要右规*/</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="comment">/*需要右规 且 没有发生上溢出*/</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        	  <span class="comment">/*右规一次*/</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="comment">/*阶码上溢出*/</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        		<span class="comment">/*结果置为正负无穷*/</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(<span class="comment">/*阶码全0，变成了非规格化数*/</span>)</span><br><span class="line">				&#123;</span><br><span class="line">						<span class="comment">/*右移一次变成非规格化数*/</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(<span class="comment">/*阶码仍然小于0，阶码下溢出*/</span>)</span><br><span class="line">				&#123;</span><br><span class="line">						<span class="comment">/*浮点数太小，无法表示，置为正负零*/</span></span><br><span class="line">				&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="comment">/*需要左规 且 阶码大于0*/</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    		<span class="keyword">while</span>(<span class="comment">/*需要左规 且 阶码大于0*/</span>)</span><br><span class="line">    		&#123;</span><br><span class="line">    				<span class="comment">/*左规一次*/</span></span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">if</span>(<span class="comment">/*阶码==*/</span>)</span><br><span class="line">    		&#123;</span><br><span class="line">    				<span class="comment">/*右移一次变为非规格化数*/</span></span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="comment">/*两个规格化数运算后得到了非规格化数*/</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    		<span class="built_in">exp</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="comment">/*未发生溢出*/</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    		<span class="comment">/*最后三位（grs）采用就近舍入到偶数的方式*/</span></span><br><span class="line">    		<span class="comment">/*移除最后三位*/</span></span><br><span class="line">    		<span class="keyword">if</span>(<span class="comment">/*进位导致了规格化被迫坏*/</span>)</span><br><span class="line">    				<span class="comment">/*再判断并规格化*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*规格化数删除隐藏位*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于减法：把操作数换成补码之后，和加法一样。</p>
+<p>乘法：</p>
+<p>可以免去阶码对齐的过程，用uint64_t表示更加方便。</p>
+<p>除法：</p>
+<p>尾数相除，为了提高精度，可以把被除数使劲放大（左移到底），除数使劲缩小（右移到底），这样得到的结果再移回原有的位置，精度更高。</p>
+<p>最后的阶码如何设定呢？我们加入了GRS bits后，相当于约定中间结果fraction是26位数，但是我们用23位乘以23位得到的是46位，因此46-26=20，这个20需要阶码来处理。最终的阶码就是fa.exponent + fb.exponent - 127 - 20。这一部分比较难以理解。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>PA 1结束了。</p>
+<p>这一部分我们设计了寄存器、主存以及标志位的模拟，定义了浮点数类型变量，同时也编写了定点数、浮点数的一些常用的运算操作，称为“数据的表示、存取和运算”。</p>
+<p>要开始“程序的执行”了。</p>
+<p>下次见。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">水风车</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.shuifengche.top/2019/09/21/PA1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%AD%98%E5%8F%96%E5%92%8C%E8%BF%90%E7%AE%97/">https://blog.shuifengche.top/2019/09/21/PA1-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%AD%98%E5%8F%96%E5%92%8C%E8%BF%90%E7%AE%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.shuifengche.top" target="_blank">本站正在维护，请稍后再访问。</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PA/">PA</a><a class="post-meta__tags" href="/tags/CPU/">CPU</a><a class="post-meta__tags" href="/tags/ALU/">ALU</a><a class="post-meta__tags" href="/tags/FPU/">FPU</a><a class="post-meta__tags" href="/tags/git/">git</a></div><div class="post_share"><div class="social-share" data-image="http://cdn.shuifengche.top/i386.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/09/23/Datalab-%E5%AE%9E%E9%AA%8C1/"><img class="prev-cover" src="http://cdn.shuifengche.top/csapp.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Datalab 实验1</div></div></a></div><div class="next-post pull-right"><a href="/2019/09/16/linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/"><img class="next-cover" src="http://cdn.shuifengche.top/ubuntu.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">linux虚拟机安装</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/09/23/Datalab-实验1/" title="Datalab 实验1"><img class="cover" src="http://cdn.shuifengche.top/csapp.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-23</div><div class="title">Datalab 实验1</div></div></a></div><div><a href="/2019/11/19/PA2-程序的执行/" title="PA2 程序的执行"><img class="cover" src="http://cdn.shuifengche.top/i386.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-11-19</div><div class="title">PA2 程序的执行</div></div></a></div><div><a href="/2020/01/20/PA4-异常中断与IO/" title="PA4-异常中断与IO"><img class="cover" src="http://cdn.shuifengche.top/i386.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-20</div><div class="title">PA4-异常中断与IO</div></div></a></div><div><a href="/2020/01/20/PA3-存储管理/" title="PA3-存储管理"><img class="cover" src="http://cdn.shuifengche.top/i386.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-20</div><div class="title">PA3-存储管理</div></div></a></div><div><a href="/2019/11/22/gitbook部署到服务器/" title="gitbook部署到服务器"><img class="cover" src="http://cdn.shuifengche.top/gitbook.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-11-22</div><div class="title">gitbook部署到服务器</div></div></a></div><div><a href="/2019/10/15/水风车的博客2-0/" title="水风车的博客2.0"><img class="cover" src="http://cdn.shuifengche.top/blog2.jpeg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-10-15</div><div class="title">水风车的博客2.0</div></div></a></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By 水风车</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
