@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>水风车的博客</title>
-  <icon>https://blog.shuifengche.top/source/img/favicon.png</icon>
+  <icon>https://blog.shuifengche.top/img/favicon.png</icon>
   <subtitle>水风车</subtitle>
   <link href="https://blog.shuifengche.top/atom.xml" rel="self"/>
   
